@@ -166,11 +166,13 @@ while (True):
     if  (srOffset / 60) < 30 and sunAboutToSet == 0 and (time - ss).days > -1:
         #The Sun is about to Set
         sunAboutToSet = 1
+        api.turn_on()
         #Execute Sunset Protocol
 
     if ((time - sr).seconds / 60) < 30 and sunAboutToRise == 0 and (time - sr).days > -1:
         #The Sun is about to rise
         sunAboutToRise = 1
+        api.turn_on()
         #Execute Sunrise Protocol
 
 #reset sunset and sunrise after they occur so they can happen again the next day
@@ -209,7 +211,7 @@ while (True):
             zeroBools()
             daytimeBool = 1
             changeBrightness(1, 2, 0)
-            #api.turn_off()
+            api.turn_off()
         
     if daytimeBool == 1 or eveBool == 1 or lateEveBool == 1:
         if lastPhased == 0: #first run
